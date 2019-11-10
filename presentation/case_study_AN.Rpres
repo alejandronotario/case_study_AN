@@ -1,0 +1,76 @@
+
+
+CASE STUDY
+========================================================
+author: ALEJANDRO NOTARIO
+date: November 7, 2019
+autosize: true
+
+
+========================================================
+
+__KNN classifier model__
+
+To predict the frequency of claims a customer’s going to make with the company
+
+I chose nearest neighbors algorithm because it is not a GLM and could be robust and simply to understand to beggining the trial
+
+It stores all the available cases and classifies the new data or case based on a similarity measure. 
+
+It classifies a data point based on how its neighbours are classified
+
+===========================================================
+
+__Why a multiclass classifier?__
+
+The claims count distribution is strongly shifted towards values of 0 and 1 claims , and a small proportion of 2 or more claims.
+
+It could make difficult to traing right a model to predict that isolated cases
+
+Thus, I have created 3 classes to predict:
+
+- 0 -> 0 claims / 0 claims per year
+- 1 -> 1 claims / 1 claims per year
+- 2 -> >= 2 claims / >=2 claims per year
+               
+=============================================================
+
+__Methods__
+
+The target of this trial id to predict the total claims form each customer. It makes sense if the customers you are comparin have the same seniority, but in this dataset the time period distribution is quite scattered. For this reason, I have applied 2 methods:
+- Method 1: Selected customers: with one year period, so the prediction is the claims count for the first year of a customer, it makes more sense than the first method, it is "probability of number of claims for this customer whithin their first policy year.
+- Method 2: Selected customers: The wohle dataset. It means that the predictions accuracy could be misleading because the model takes the tiem periods as a variable and in actually the prediction requieres exactly the same period to work right.
+
+
+=============================================================
+
+__Data clean up__
+
+It is mandatory to study the variables distribution and behaivours, for this reason there is this first step in which contains:
+
+__Tasks:__ Exploring data, Setting up the target, Imputation, Handling ouliers
+
+__Feature engineering__
+
+As KNN is a method besed in distances it gets the influences of the raw numbers without scale and it is important to encode categorical variables as well
+
+__Tasks:__ Scaling, Encoding, New variables
+
+=====================================================================
+
+__Modelling & evaluation__
+
+The library which I used is from SciKitLearn where it can be found every hyperparameter to adjust
+
+
+
+Besides the score metric and confusion matrix, I added a simulation prediction game using the whole dataset as if it were an actual use of this product
+
+
+=============================================================
+
+time spent: around 6 hours
+
+Thanks!
+
+
